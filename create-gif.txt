@@ -2,8 +2,6 @@ gif conversion notes
 
 	sips -s format gif DSC02580.JPG --out 1.gif
 
-
-
 1 Resize to 640
 
 	sips -Z 640 *.JPG

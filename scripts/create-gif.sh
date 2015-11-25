@@ -1,14 +1,16 @@
 #!/bin/bash          
 
-#Note: Input dir should not have trailing slash
+# Usage:
+#	bash create-gif.sh [input-dir] [output-filename-prefix] [image-width] [delay]
+# 	bash create-gif.sh /root/dir/image-files new-gif 640 15
+#
+# Note: Input dir should not have trailing slash
 
-#Initialize
-set -x
-SAVEIFS=$IFS
-IFS=$(echo -en "\n\b")
+# Verbose execution
+# set -x
 
 # Set defaults
-defaultSize=640
+defaultSize=$3
 
 # Create temp directory
 dirToProcess="$1"
@@ -23,7 +25,6 @@ dir="$tempDir/*"
 for i in $dir;
 do 
 	sips -Z $defaultSize $i;
-	#echo "$i\n";
 done
 
 # Convert images to GIF
@@ -36,10 +37,7 @@ done
 
 # Convert images to animated GIF
 dir="$tempDir/*"
-gifsicle --delay 15 --loopcount=forever $dir > $2
+gifsicle --delay $4 --loopcount=forever $dir > "$2-$3-$4.gif"
 
 # Cleanup
 rm -r "$tempDir"
-
-# End script
-IFS=$SAVEIFS

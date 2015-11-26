@@ -13,4 +13,6 @@ Cron jobs
 
 TODO
 	Make interval configurable
+	Check FTP upload status and only delete if successful
+	
 	

@@ -10,7 +10,9 @@ for file in $IMAGE_DIR
 do
 	echo "Working on...$(basename $file)"
 	bash /home/pi/Desktop/timelapse-pi/scripts/ftp-file.sh $file
-	rm -f $file
+	
+	# TODO: Check success of FTP before deleting
+	#rm -f $file
 done
 
 

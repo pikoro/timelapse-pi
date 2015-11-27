@@ -1,5 +1,7 @@
 #!/bin/bash          
 
+# TODO: Validate input
+
 # Usage:
 #	bash create-gif.sh [input-dir] [output-filename-prefix] [image-width] [delay]
 # 	bash create-gif.sh /root/dir/image-files new-gif 640 15

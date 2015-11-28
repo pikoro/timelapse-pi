@@ -2,7 +2,7 @@
 
 _date=$(date +"%Y-%m-%d_%H%M")
 
-raspistill -n -o /home/pi/Desktop/timelapse-pi/data/images/$_date.jpg
-
-
+echo "Taking picture..."
+raspistill -n -o $1/$_date.jpg
+echo "Picture saved to $1/$_date.jpg"
 

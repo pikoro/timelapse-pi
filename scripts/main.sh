@@ -1,18 +1,27 @@
 #!/bin/bash
 
-IMAGE_DIR="/home/pi/Desktop/timelapse-pi/data/images/*.jpg"
+# Include config file
+source config.cfg
+
+# Exit if disabled
+if [ $CFG_ENABLED != 1 ]; then
+	if [ "$1" != "enable" ]; then
+		echo "Disabled, exiting..."
+		exit
+	fi
+fi 
 
 # Take pic
-bash /home/pi/Desktop/timelapse-pi/scripts/take-picture.sh
+bash ./take-picture.sh $CFG_IMAGE_DIR
 
 # Upload image directory
-for file in $IMAGE_DIR
+for file in $CFG_FTP_UPLOAD_FILES
 do
 	echo "Working on...$(basename $file)"
-	bash /home/pi/Desktop/timelapse-pi/scripts/ftp-file.sh $file
+	bash ./ftp-file.sh $CFG_FTP_SERVER $CFG_FTP_USER $CFG_FTP_PASS $file
 	
 	# TODO: Check success of FTP before deleting
-	#rm -f $file
+	rm -f $file
 done
 
 

@@ -14,5 +14,5 @@ Cron jobs
 TODO
 	Make interval configurable
 	Check FTP upload status and only delete if successful
-	Ability to turn off picture taking, but have it reset on reboot
-	FTP upload should upload all available files, not the one that was just taken
+	
+	
